@@ -48,3 +48,4 @@ C:\Users\chril\source\repos\APIIntegration\obj\Debug\net9.0\APIIntegration.genru
 C:\Users\chril\source\repos\APIIntegration\obj\Debug\net9.0\ref\APIIntegration.dll
 C:\Users\chril\source\repos\APIIntegration\bin\Debug\net9.0\Microsoft.Extensions.Http.dll
 C:\Users\chril\source\repos\APIIntegration\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\chril\source\repos\APIIntegration\obj\Debug\net9.0\APIIntegration.sourcelink.json
