@@ -6,19 +6,25 @@ using APIIntegration.Core;
 
 public class CloudPollingService : BackgroundService
 {
-    private readonly ICloudClient _cloudClient;
-    private readonly ILanForwarder _lanForwarder;
-    private readonly ILogger<CloudPollingService> _logger;
+    private readonly ICloudClient cloudClient;
+    private readonly ILanForwarder lanForwarder;
+    private readonly ILogger<CloudPollingService> logger;
     
-    public CloudPollingService(CloudClient cloudClient, LanForwarder lanForwarder, ILogger<CloudPollingService> logger)
+    public CloudPollingService(ICloudClient cloudClient, ILanForwarder lanForwarder, ILogger<CloudPollingService> logger)
     {
-        _cloudClient = cloudClient;
-        _lanForwarder = lanForwarder;
-        _logger = logger;
+        this.cloudClient = cloudClient;
+        this.lanForwarder = lanForwarder;
+        this.logger = logger;
     }
 
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        throw new NotImplementedException();
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            logger.LogInformation("CloudPollingService is running as intended...");
+
+            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+        }
+        // throw new NotImplementedException();
     }
 }
