@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 
 var builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddHostedService<Worker>();
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("Api"));
 // builder.Services.AddHttpClient<ICloudClient, CloudClient>();
