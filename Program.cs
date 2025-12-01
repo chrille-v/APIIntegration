@@ -4,8 +4,12 @@ using APIIntegration.Infrastructure;
 using APIIntegration.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
+using Microsoft.EntityFrameworkCore;
+using APIIntegration.Data;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+builder.Services.AddDbContext<IntegrationDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("Api"));
 // builder.Services.AddHttpClient<ICloudClient, CloudClient>();
