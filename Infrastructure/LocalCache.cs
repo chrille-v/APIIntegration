@@ -20,6 +20,21 @@ class LocalCache : ILocalCache
         throw new NotImplementedException();
     }
 
+
+    public Task<Message?> GetNextLanMessageAsync(CancellationToken cancellationToken)
+    {
+        // TODO: SELECT * FROM MessagesWHERE Status = 0  ORDER BY LastUpdate LIMIT 1
+        throw new NotImplementedException();
+    }
+
+    public Task IncrementRetryAsync(string messageId, CancellationToken cancellationToken)
+    {
+        // TODO: UPDATE Messages SET RetryCount = RetryCount + 1 WHERE MessageId = @id
+        throw new NotImplementedException();
+    }
+
+
+
     public Task MarkAsSentAsync(string messageId, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
