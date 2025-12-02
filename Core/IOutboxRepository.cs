@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIIntegration.Infrastructure.Data;
+using APIIntegration.Domain;
 
 namespace APIIntegration.Core
 {

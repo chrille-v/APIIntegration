@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIIntegration.Core;
+using APIIntegration.Domain;
 using APIIntegration.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
