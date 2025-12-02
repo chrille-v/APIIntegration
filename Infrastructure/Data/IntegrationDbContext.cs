@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIIntegration.Data
+namespace APIIntegration.Infrastructure.Data
 {
     public class IntegrationDbContext : DbContext
     {

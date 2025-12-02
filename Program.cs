@@ -5,7 +5,7 @@ using APIIntegration.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using Microsoft.EntityFrameworkCore;
-using APIIntegration.Data;
+using APIIntegration.Infrastructure.Data;
 
 var builder = Host.CreateApplicationBuilder(args);
 
