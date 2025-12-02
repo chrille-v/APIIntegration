@@ -1,4 +1,5 @@
 using APIIntegration;
+using APIIntegration.Config;
 using APIIntegration.Core;
 using APIIntegration.Infrastructure;
 using APIIntegration.Services;
@@ -8,9 +9,14 @@ using Microsoft.Extensions.Http;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("Api"));
-// builder.Services.AddHttpClient<ICloudClient, CloudClient>();
+
+//registration of LAN services
+builder.Services.Configure<LanSettings>(builder.Configuration.GetSection("Lan"));
+
+// HttpClient for LAN forwarder
+builder.Services.AddHttpClient<ILanForwarder, LanForwarder>();
+
 builder.Services.AddSingleton<ICloudClient, CloudClient>();
-builder.Services.AddSingleton<ILanForwarder, LanForwarder>();
 builder.Services.AddSingleton<ILocalCache, LocalCache>();
 builder.Services.AddSingleton<IIdempotencyService, IdempotencyService>();
 
