@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIIntegration.Core;
-using APIIntegration.Data;
+using APIIntegration.Core.Models;
+using APIIntegration.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIIntegration.Infrastructure
 {
@@ -15,29 +17,52 @@ namespace APIIntegration.Infrastructure
             this.db = db;
         }
 
-        public Task AddAsync(OutboxMessage message)
+        public async Task AddAsync(OutboxMessage message)
         {
-            throw new NotImplementedException();
+            db.OutboxMessages.Add(message);
+            await db.SaveChangesAsync();
         }
 
         public Task<List<OutboxMessage>> GetPendingAsync(int maxBatch)
         {
-            throw new NotImplementedException();
+            return db.OutboxMessages
+                .Where(x => x.Status == "Pending")
+                .OrderBy(x => x.CreatedAt)
+                .Take(maxBatch)
+                .ToListAsync();
         }
 
-        public Task IncrementRetryAsync(Guid id)
+        public async Task IncrementRetryAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var msg = await db.OutboxMessages.FindAsync(id);
+            if (msg == null) return;
+
+            msg.RetryCount++;
+            msg.LastAttemptAt = DateTime.UtcNow;
+            await db.SaveChangesAsync();
         }
 
-        public Task MarkAsFailedAsync(Guid id, string error)
+        public async Task MarkAsFailedAsync(Guid id, string error)
         {
-            throw new NotImplementedException();
+            var msg = await db.OutboxMessages.FindAsync(id);
+
+            if (msg == null) return;
+
+            msg.Status = "Failed";
+            msg.LastAttemptAt = DateTime.UtcNow;
+            msg.RetryCount ++;
+            await db.SaveChangesAsync();
         }
 
-        public Task MarkAsSentAsync(Guid id)
+        public async Task MarkAsSentAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var msg = await db.OutboxMessages.FindAsync(id);
+
+            if (msg == null) return;
+
+            msg.Status = "Sent";
+            msg.LastAttemptAt = DateTime.UtcNow;
+            await db.SaveChangesAsync();
         }
     }
 }
