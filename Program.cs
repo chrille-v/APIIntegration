@@ -12,15 +12,19 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddDbContext<IntegrationDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("Api"));
-// builder.Services.AddHttpClient<ICloudClient, CloudClient>();
+
 builder.Services.AddSingleton<ICloudClient, CloudClient>();
 builder.Services.AddSingleton<ILanForwarder, LanForwarder>();
 builder.Services.AddSingleton<ILocalCache, LocalCache>();
 builder.Services.AddSingleton<IIdempotencyService, IdempotencyService>();
 
-builder.Services.AddHostedService<CloudPollingService>();
+builder.Services.AddHostedService<CloudPollingWorker>();
 builder.Services.AddHostedService<OfflineDetectionService>();
 builder.Services.AddHostedService<ReplayService>();
+
+// Registrating the outbox pattern cycle
+builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();
+builder.Services.AddScoped<ICustomerApiClient, MockCustomerApiClient>();
 
 var host = builder.Build();
 host.Run();
