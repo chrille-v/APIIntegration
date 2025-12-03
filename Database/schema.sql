@@ -2,5 +2,7 @@ CREATE TABLE IF NOT EXISTS Messages (
     MessageId TEXT PRIMARY KEY,
     Payload TEXT NOT NULL,
     Status INTEGER NOT NULL,
-    LastUpdated TEXT NOT NULL
+    Type INTEGER NOT NULL,
+    LastUpdate TEXT NOT NULL,
+    RetryCount INTEGER NOT NULL DEFAULT 0
 );
