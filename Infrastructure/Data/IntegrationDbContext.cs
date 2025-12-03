@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using APIIntegration.Domain;
+using APIIntegration.Core.Models;
 
 namespace APIIntegration.Infrastructure.Data
 {
