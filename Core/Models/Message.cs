@@ -10,4 +10,5 @@ public class Message
     public DateTime LastUpdate { get; set; }
     public MessageStatus Status { get; set; }
     public MessageType Type { get; set; }
+    public int RetryCount { get; set; } = 0;
 }
