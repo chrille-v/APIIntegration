@@ -22,3 +22,9 @@ obj/
 project.lock.json
 *.nuget.props
 *.nuget.targets
+
+
+*.db
+*.sqlite
+localMessages.db
+test_messages.db
