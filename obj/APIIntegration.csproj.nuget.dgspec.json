@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
+    "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
+    "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "projectUniqueName": "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
         "projectName": "APIIntegration",
-        "projectPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "projectPath": "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
         "packagesPath": "C:\\Users\\chril\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\obj\\",
+        "outputPath": "c:\\Users\\chril\\source\\repos\\APIIntegration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chril\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,6 +45,10 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[10.0.0, )"
