@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
+    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
   },
   "projects": {
-    "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
+    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "projectUniqueName": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
         "projectName": "APIIntegration",
-        "projectPath": "c:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "projectPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
         "packagesPath": "C:\\Users\\chril\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\chril\\source\\repos\\APIIntegration\\obj\\",
+        "outputPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chril\\AppData\\Roaming\\NuGet\\NuGet.Config"

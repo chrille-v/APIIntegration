@@ -27,7 +27,7 @@ builder.Services.AddSingleton<ICloudClient, CloudClient>();
 builder.Services.AddSingleton<ILocalCache, LocalCache>();
 builder.Services.AddSingleton<IIdempotencyService, IdempotencyService>();
 
-builder.Services.AddHostedService<CloudPollingService>();
+builder.Services.AddHostedService<CloudPollingWorker>();
 builder.Services.AddHostedService<LanWorkerService>();
 // TODO Phase 4-6: Enable when OfflineDetectionService and ReplayService are implemented
 // builder.Services.AddHostedService<OfflineDetectionService>();
