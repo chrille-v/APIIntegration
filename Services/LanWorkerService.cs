@@ -29,7 +29,7 @@ namespace APIIntegration.Services
             {
                 try
                 {
-                    //fetch next LAN -> cloud message from local DB
+                    //fetch next LAN ->cloud message from local DB
                     var message = await _localCache.GetNextLanMessageAsync(stoppingToken);
 
                     //if no pending messages, wait a bit and continue
@@ -39,7 +39,7 @@ namespace APIIntegration.Services
                         continue;
                     }
 
-                    //try forwarding message through LAN
+                    //try forwarding message thrrough LAN
                     bool ok = await _lanForwarder.ForwardJobAsync(message, stoppingToken);
 
                     //update status based on result
@@ -62,8 +62,5 @@ namespace APIIntegration.Services
                 await Task.Delay(200, stoppingToken);
             }
         }
-
-
-
     }
 }

@@ -2,11 +2,12 @@ using APIIntegration;
 using APIIntegration.Config;
 using APIIntegration.Core;
 using APIIntegration.Infrastructure;
+using APIIntegration.Infrastructure.Data;
 using APIIntegration.Services;
+using APIIntegration.Workers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
-using Microsoft.EntityFrameworkCore;
-using APIIntegration.Infrastructure.Data;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -23,15 +24,25 @@ builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("D
 // HttpClient for LAN forwarder
 builder.Services.AddHttpClient<ILanForwarder, LanForwarder>();
 
+// HttpClient for cloud API health checks
+builder.Services.AddHttpClient("CloudApi", client =>
+{
+    var apiSettings = builder.Configuration.GetSection("Api");
+    client.BaseAddress = new Uri(apiSettings["BaseUrl"] ?? "https://api.example.com");
+    client.Timeout = TimeSpan.FromSeconds(5); // short timeout for health checks
+});
+
 builder.Services.AddSingleton<ICloudClient, CloudClient>();
 builder.Services.AddSingleton<ILocalCache, LocalCache>();
 builder.Services.AddSingleton<IIdempotencyService, IdempotencyService>();
 
+builder.Services.AddScoped<IReplayService, ReplayService>();
+builder.Services.AddSingleton<IConnectivityService, ConnectivityService>();
+
+
 builder.Services.AddHostedService<CloudPollingWorker>();
 builder.Services.AddHostedService<LanWorkerService>();
-// TODO Phase 4-6: Enable when OfflineDetectionService and ReplayService are implemented
-// builder.Services.AddHostedService<OfflineDetectionService>();
-// builder.Services.AddHostedService<ReplayService>();
+builder.Services.AddHostedService<OfflineDetectionWorker>();
 
 // Registrating the outbox pattern cycle
 builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();

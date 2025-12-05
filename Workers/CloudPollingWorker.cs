@@ -8,13 +8,15 @@ public class CloudPollingWorker : BackgroundService
 {
     private readonly IServiceProvider serviceProvider;
     private readonly ILogger<CloudPollingWorker> logger;
+    private readonly IConnectivityService _connectivity;
     private readonly int batchSize;
     private readonly int delayMs;
 
-    public CloudPollingWorker(ILogger<CloudPollingWorker> logger, IConfiguration config, IServiceProvider serviceProvider)
+    public CloudPollingWorker(ILogger<CloudPollingWorker> logger, IConfiguration config, IServiceProvider serviceProvider, IConnectivityService connectivity)
     {
         this.logger = logger;
         this.serviceProvider = serviceProvider;
+        this._connectivity = connectivity;
         batchSize = config.GetValue<int>("CloudWorker:BatchSize");
         delayMs = config.GetValue<int>("CloudWorker:PollIntervals");
     }
@@ -25,6 +27,13 @@ public class CloudPollingWorker : BackgroundService
 
         while (!stoppingToken.IsCancellationRequested)
         {
+
+             if (!_connectivity.IsOnline)
+            {
+                await Task.Delay(5000, stoppingToken);
+                continue;
+            }
+            
             using var scope = serviceProvider.CreateScope();
             var repo = scope.ServiceProvider.GetRequiredService<IOutboxRepository>();
             var client = scope.ServiceProvider.GetRequiredService<ICustomerApiClient>();
