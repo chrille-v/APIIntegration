@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
+    "C:\\Users\\antun\\source\\repos\\APIIntegration\\APIIntegration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
+    "C:\\Users\\antun\\source\\repos\\APIIntegration\\APIIntegration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "projectUniqueName": "C:\\Users\\antun\\source\\repos\\APIIntegration\\APIIntegration.csproj",
         "projectName": "APIIntegration",
-        "projectPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\APIIntegration.csproj",
-        "packagesPath": "C:\\Users\\chril\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chril\\source\\repos\\APIIntegration\\obj\\",
+        "projectPath": "C:\\Users\\antun\\source\\repos\\APIIntegration\\APIIntegration.csproj",
+        "packagesPath": "C:\\Users\\antun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\antun\\source\\repos\\APIIntegration\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\chril\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\antun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"

@@ -1,7 +1,7 @@
 
-namespace APIIntegration.Services;
+namespace APIIntegration.Workers;
 
-public class OfflineDetectionService : BackgroundService
+public class OfflineDetectionWorker : BackgroundService
 {
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {

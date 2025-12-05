@@ -1,7 +1,7 @@
 
-namespace APIIntegration.Services;
+namespace APIIntegration.Workers;
 
-public class ReplayService : BackgroundService
+public class ReplayWorker : BackgroundService
 {
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
